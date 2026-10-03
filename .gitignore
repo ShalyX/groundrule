@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.test-output/
+.playwright-cli/
+.env
+.env.local
+.vercel/
+*.tsbuildinfo
+*.log
