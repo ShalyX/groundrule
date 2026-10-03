@@ -18,6 +18,8 @@ When a material condition changes, Groundrule closes the execution gate. A stale
 
 The included live example is intentionally in a breaking state. `payments-api` demonstrates that Groundrule blocks execution when authentication, charge-limit, and data-retention terms move outside their approved bounds.
 
+A complete compatible-path run is also deployed as `groundrule-safe-demo-20261003`. Its registration, consensus assessment, permit consumption, and protected execution are documented in [`docs/live-verification.md`](docs/live-verification.md).
+
 ## Live GenLayer contracts
 
 - DriftPermit controller: [`0x4Bdb443424bEe8dd22809dd0B76755109aC89615`](https://explorer-studio.genlayer.com/address/0x4Bdb443424bEe8dd22809dd0B76755109aC89615)

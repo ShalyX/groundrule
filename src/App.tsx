@@ -397,7 +397,7 @@ function App() {
                 <label className="wide"><span>Baseline SHA-256</span><input required spellCheck="false" placeholder="64-character fingerprint" value={draft.baselineSha256} onChange={(event) => setDraft({ ...draft, baselineSha256: event.target.value })} /></label>
                 <label className="wide"><span>Live dependency URL</span><input required type="url" placeholder="https://…/current-policy.md" value={draft.liveUrl} onChange={(event) => setDraft({ ...draft, liveUrl: event.target.value })} /></label>
                 <label><span>Authorized executor</span><input required spellCheck="false" value={draft.executor} onChange={(event) => setDraft({ ...draft, executor: event.target.value })} /></label>
-                <label><span>Permit lease · hours</span><input required type="number" min="0.02" max="24" step="0.25" value={draft.leaseHours} onChange={(event) => setDraft({ ...draft, leaseHours: event.target.value })} /></label>
+                <label><span>Permit lease · hours</span><input required type="number" min="0.02" max="24" step="0.01" value={draft.leaseHours} onChange={(event) => setDraft({ ...draft, leaseHours: event.target.value })} /></label>
               </div>
               <div className="condition-builder">
                 <div className="condition-heading">
