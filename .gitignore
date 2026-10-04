@@ -2,6 +2,7 @@ node_modules/
 dist/
 .test-output/
 .playwright-cli/
+.npm-cache/
 .env
 .env.local
 .vercel/
