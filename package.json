@@ -8,8 +8,10 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
-    "test": "tsc src/lib/domain.ts --target ES2022 --module NodeNext --moduleResolution NodeNext --outDir .test-output && node --test --experimental-test-isolation=none tests/domain.test.mjs",
-    "check": "npm test && npm run build"
+    "test": "tsc src/lib/domain.ts --target ES2022 --module NodeNext --moduleResolution NodeNext --outDir .test-output && node --test --experimental-test-isolation=none tests/*.test.mjs",
+    "test:contracts": "python -m pytest -p no:cacheprovider contract_tests -q",
+    "lint:contracts": "python -m genvm_linter.cli check --json contracts/drift_permit.py && python -m genvm_linter.cli check --json contracts/guarded_consumer.py",
+    "check": "npm test && npm run test:contracts && npm run lint:contracts && npm run build"
   },
   "dependencies": {
     "genlayer-js": "1.1.8",

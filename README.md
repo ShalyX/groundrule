@@ -24,14 +24,16 @@ A complete compatible-path run is also deployed as `groundrule-safe-demo-2026100
 
 ## Live GenLayer contracts
 
-- DriftPermit controller: [`0x4Bdb443424bEe8dd22809dd0B76755109aC89615`](https://explorer-studio.genlayer.com/address/0x4Bdb443424bEe8dd22809dd0B76755109aC89615)
-- Guarded consumer: [`0x4cEdAc7a470d81EFC151564d5887Ba616bF56C31`](https://explorer-studio.genlayer.com/address/0x4cEdAc7a470d81EFC151564d5887Ba616bF56C31)
+- DriftPermit controller: [`contracts/drift_permit.py`](contracts/drift_permit.py) · [`0x4Bdb443424bEe8dd22809dd0B76755109aC89615`](https://explorer-studio.genlayer.com/address/0x4Bdb443424bEe8dd22809dd0B76755109aC89615)
+- Groundrule GuardedConsumer: [`contracts/guarded_consumer.py`](contracts/guarded_consumer.py) · [`0x4cEdAc7a470d81EFC151564d5887Ba616bF56C31`](https://explorer-studio.genlayer.com/address/0x4cEdAc7a470d81EFC151564d5887Ba616bF56C31)
 
-Groundrule is a separate product built on those contracts. DriftPermit supplies the reusable consensus and permit primitive; Groundrule supplies the team workflow: onboarding, monitoring, evidence inspection, wallet transactions, and protected execution.
+Both complete Intelligent Contract sources are included in this repository. DriftPermit supplies the reusable consensus and permit primitive. GuardedConsumer is Groundrule's project-specific execution contract. The product layer supplies onboarding, monitoring, evidence inspection, wallet transactions, and the complete protected-execution lifecycle.
+
+[`contracts/deployments.studionet.json`](contracts/deployments.studionet.json) maps each deployed address to its source hash and public methods. [`contracts/README.md`](contracts/README.md) explains the onchain boundary and verification commands.
 
 ## Run locally
 
-Requirements: Node.js 20 or newer and a browser wallet such as Rabby or MetaMask.
+Requirements: Node.js 20 or newer and a browser wallet such as Rabby or MetaMask. Python 3.11 or newer is required only for the contract test and lint suites.
 
 ```bash
 npm install
@@ -43,9 +45,12 @@ Open `http://127.0.0.1:5173`. Reads use the same-origin StudioNet proxy. Wallet 
 To verify the production bundle and domain behavior:
 
 ```bash
+npm install
+python -m pip install -r requirements.txt
 npm run check
-npm audit --omit=dev
 ```
+
+`npm run check` runs the frontend behavior tests, repository/deployment source-integrity test, GenLayer direct and integration tests, GenVM lint checks, and the production build. Run `npm audit --omit=dev` separately for the production dependency audit.
 
 ## Verification path
 
@@ -70,6 +75,17 @@ browser wallet ─ Groundrule UI ───────────────�
 ```
 
 The frontend never derives an allow decision locally. It reads control and permit state from the deployed contracts, waits for `FINALIZED` transaction receipts, and reloads contract state after every write.
+
+## Repository layout
+
+```text
+contracts/                 complete deployed Intelligent Contract sources and address manifest
+contract_tests/direct/     DriftPermit and Groundrule GuardedConsumer behavior tests
+contract_tests/integration contract-to-contract simulator lifecycle
+src/                       wallet-connected Groundrule product
+api/                       same-origin StudioNet RPC proxy
+docs/                      public live-verification evidence
+```
 
 ## Configuration
 
