@@ -2,6 +2,8 @@
 
 Groundrule is an external-dependency control plane for autonomous agents. Teams declare the terms an agent relies on, seal an authoritative baseline, and let GenLayer validators compare those terms with the live service before an action can execute.
 
+**Live product:** [groundrule-sand.vercel.app](https://groundrule-sand.vercel.app)
+
 ![Groundrule showing a breaking dependency and a closed execution gate](docs/groundrule-dashboard.png)
 
 When a material condition changes, Groundrule closes the execution gate. A stale approval cannot be reused: successful assessments create short-lived, one-use permits tied to the dependency version and the exact evidence snapshot reviewed by consensus.
@@ -36,7 +38,7 @@ npm install
 npm run dev
 ```
 
-Open `http://127.0.0.1:5173`. Reads use the same-origin StudioNet proxy. Wallet writes switch or add GenLayer Studio Network when needed.
+Open `http://127.0.0.1:5173`. Reads use the same-origin StudioNet proxy. Wallet writes switch or add GenLayer Studio Network when needed. The public deployment is available at [groundrule-sand.vercel.app](https://groundrule-sand.vercel.app).
 
 To verify the production bundle and domain behavior:
 

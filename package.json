@@ -2,12 +2,13 @@
   "name": "groundrule",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://groundrule-sand.vercel.app",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
-    "test": "tsc src/lib/domain.ts --target ES2022 --module NodeNext --moduleResolution NodeNext --outDir .test-output && node --test tests/domain.test.mjs",
+    "test": "tsc src/lib/domain.ts --target ES2022 --module NodeNext --moduleResolution NodeNext --outDir .test-output && node --test --experimental-test-isolation=none tests/domain.test.mjs",
     "check": "npm test && npm run build"
   },
   "dependencies": {
